@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Search</title>
+</head>
+<body>
+    <h2>Search Student</h2>
+
+    <input type="text" id="roll" placeholder="Enter Roll Number">
+
+    <button onclick="searchStudent()">Search</button>
+
+    <p id="result"></p>
+
+    <script>
+    function searchStudent() {
+        let students = JSON.parse(
+            localStorage.getItem("students") || "[]"
+        );
+
+        let roll = document.getElementById("roll").value;
+
+        let student = students.find(s => s.roll === roll);
+
+        if (student) {
+            document.getElementById("result").innerHTML =
+                "Name: " + student.name +
+                "<br>Email: " + student.email +
+                "<br>Roll Number: " + student.roll;
+        } else {
+            document.getElementById("result").innerHTML =
+                "Student Not Found!";
+        }
+    }
+    </script>
+</body>
+</html>
