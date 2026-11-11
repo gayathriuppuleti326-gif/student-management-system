@@ -1,2 +1,4 @@
+
 # Student Management System
-This project is developed using HTML, CSS and JavaScript.
+
+This project is developed using HTML, CSS, JavaScript and Bootstrap.
