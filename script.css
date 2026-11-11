@@ -1,0 +1,49 @@
+function addStudent() {
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+    let department = document.getElementById("department").value;
+    let email = document.getElementById("email").value;
+
+    if (name === "" || roll === "" ||
+        department === "" || email === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let table = document.getElementById("studentList");
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = name;
+    row.insertCell(1).innerHTML = roll;
+    row.insertCell(2).innerHTML = department;
+    row.insertCell(3).innerHTML = email;
+
+    let action = row.insertCell(4);
+
+    let editBtn = document.createElement("button");
+    editBtn.innerHTML = "Edit";
+    editBtn.onclick = function() {
+        document.getElementById("name").value = row.cells[0].innerHTML;
+        document.getElementById("roll").value = row.cells[1].innerHTML;
+        document.getElementById("department").value = row.cells[2].innerHTML;
+        document.getElementById("email").value = row.cells[3].innerHTML;
+
+        table.deleteRow(row.rowIndex - 1);
+    };
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerHTML = "Delete";
+    deleteBtn.onclick = function() {
+        table.deleteRow(row.rowIndex - 1);
+    };
+
+    action.appendChild(editBtn);
+    action.appendChild(deleteBtn);
+
+    document.getElementById("name").value = "";
+    document.getElementById("roll").value = "";
+    document.getElementById("department").value = "";
+    document.getElementById("email").value = "";
+
+    alert("Student Added Successfully!");
+}
